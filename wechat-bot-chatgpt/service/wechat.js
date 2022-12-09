@@ -283,13 +283,15 @@ async function handle_recv_msg(j)
     consoconsole.log(j);le.log('接收人:'+wxid);
     console.log('内容：'+content);
     console.log('发送人：'+sender);*///如果为空，那就是你自己发的
+    console.log("接收到消息：" ,　j);
     let res  = await chatBot.sendMsg(j.content);
-    send_txt_msg(j.wxid,res);
+    console.log("Chatgpt回复：" +　res);
+    ws.send(send_txt_msg(j.wxid,res));
 }
 
 function heartbeat(j)
 {
-    console.log(j);
+    //console.log(j);
     //console.log(utf16ToUtf8(wxid),utf16ToUtf8(name));
 }
 
